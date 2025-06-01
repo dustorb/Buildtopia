@@ -46,10 +46,71 @@ namespace DialogueEditor
         private void Awake()
         {
             m_rect = GetComponent<RectTransform>();
+
+            //if (m_buttonType == eButtonType.End)
+            //{
+            //    ConversationManager.Instance.EndConversation();
+            //}
+
+            switch (m_buttonType)
+            {
+                case eButtonType.Option:
+                    {
+
+                    }
+                    break;
+
+                case eButtonType.Speech:
+                    {
+                        ConversationManager.Instance.EndConversation();
+                    }
+                    break;
+
+                case eButtonType.End:
+                    {
+                        ConversationManager.Instance.EndConversation();
+                    }
+                    break;
+            }
+
+            //ConversationManager.Instance.EndConversation();
+
+            //if (m_buttonType == eButtonType.End)
+            //{
+            //    ConversationManager.Instance.EndConversation();
+            //}
+
+        }
+
+        void Start()
+        {
+            switch (m_buttonType)
+            {
+                case eButtonType.Option:
+                    {
+
+                    }
+                    break;
+
+                case eButtonType.Speech:
+                    {
+
+                    }
+                    break;
+
+                case eButtonType.End:
+                    {
+                        ConversationManager.Instance.EndConversation();
+                    }
+                    break;
+            }
+
         }
 
         private void Update()
         {
+            
+
             if (Hovering)
             {
                 m_hoverT += Time.deltaTime;
@@ -187,14 +248,14 @@ namespace DialogueEditor
 
                 case eButtonType.Speech:
                     {
-                        TextMesh.text = "Continue.";
+                        TextMesh.text = "Продолжить.";
                         TextMesh.font = continueFont;
                     }
                     break;
 
                 case eButtonType.End:
                     {
-                        TextMesh.text = "End.";
+                        TextMesh.text = "Конец";
                         TextMesh.font = endFont;
                     }
                     break;

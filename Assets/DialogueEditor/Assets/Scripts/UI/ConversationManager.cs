@@ -7,6 +7,8 @@ namespace DialogueEditor
 {
     public class ConversationManager : MonoBehaviour
     {
+        
+
         private enum eState
         {
             TransitioningDialogueBoxOn,
@@ -38,6 +40,11 @@ namespace DialogueEditor
         public Sprite OptionImage;
         public bool OptionImageSliced;
         public bool AllowMouseInteraction;
+
+        //public AudioClip Typesound;
+        //public AudioSource TextBeep;
+
+
 
         // Non-User facing 
         // Not exposed via custom inspector
@@ -353,6 +360,11 @@ namespace DialogueEditor
                 DialogueText.maxVisibleCharacters = m_scrollIndex;
                 m_scrollIndex++;
 
+                
+                AudioPlayer.PlayOneShot(AudioPlayer.clip);
+
+
+
                 // Finished?
                 if (m_scrollIndex >= m_targetScrollTextCount)
                 {
@@ -518,6 +530,9 @@ namespace DialogueEditor
                     DialogueText.maxVisibleCharacters = 0;
                     m_elapsedScrollTime = 0f;
                     m_scrollIndex = 0;
+
+                    
+                    //TextBeep.PlayOneShot(Typesound);
                 }
                 else
                 {
@@ -537,7 +552,7 @@ namespace DialogueEditor
             {
                 AudioPlayer.clip = speech.Audio;
                 AudioPlayer.volume = speech.Volume;
-                AudioPlayer.Play();
+                //AudioPlayer.Play();
             }
 
             if (ScrollText)
