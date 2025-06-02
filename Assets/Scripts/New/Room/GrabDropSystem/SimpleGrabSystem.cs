@@ -23,6 +23,8 @@ public class SimpleGrabSystem : MonoBehaviour
     public QuestManager QuestManager;
     public Animator insertDisk;
 
+
+
     private void Update()
     {
         // Execute logic only on button pressed
